@@ -1351,7 +1351,7 @@ def main():
 
     next_tick = (now + timedelta(minutes=minutes_until_next_hour)).strftime("%H:%M")
     print(f"Bot 已启动，等待消息... (Life tick 每小时整点，下次 {next_tick})")
-    pp.run_polling(drop_pending_updates=True)
+    app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
