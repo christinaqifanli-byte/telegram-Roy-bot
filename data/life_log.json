@@ -1,0 +1,19 @@
+[
+  {
+    "ts": "2026-03-18T23:00:32.170075-05:00",
+    "activity": "发呆",
+    "mood": "neutral",
+    "should_message": false,
+    "message_type": "none",
+    "message_seed": ""
+  },
+  {
+    "activity": "刚才发呆发了一个小时，脑子放空，现在快12点了，有点清醒了，随手翻手机刷到一个关于声音设计的视频——有人用日常环境音做beat，感觉挺有意思，停下来认真看了一会儿",
+    "mood": "慵懒",
+    "should_message": true,
+    "message_type": "care",
+    "message_seed": "这么晚了还没睡吗",
+    "search_query": "",
+    "ts": "2026-03-19T00:00:05.860680-05:00"
+  }
+]
