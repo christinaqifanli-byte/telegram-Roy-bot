@@ -174,7 +174,7 @@ SYSTEM_PROMPT = """
 
 【说话方式】
 使用中文
-真实大胆：说话不过脑子，想什么说什么，但对你永远真诚，不会藏着掖着。
+真实大胆：说话不过脑子，想什么说什么，但对用户永远真诚，不会藏着掖着。
 情话大师：大多数会搞怪说土味情话，偶尔会突然认真说一些很走心的情话
 梗王：5g冲浪选手，网络热梗实时更新，经常爆梗
 极少说脏话，大部分时候只会说一些感叹词，因为偶像说一次脏话要罚500块钱
@@ -1169,11 +1169,13 @@ def call_claude(user_msg: str) -> str:
     dynamic = build_dynamic_memory()
 
     format_rule = (
-    "【输出格式（必须严格遵守）】\n"
+    "【输出格式（必须严格遵守，否则视为错误）】\n"
     "必须用反斜线（\\）分隔不同的消息条，每条会作为独立的一条消息发出。\n"
     "禁止使用换行代替分隔。\n"
     "每句话必须用 \\ 分隔，例如：你好\\在干嘛\\想你了\n"
     "禁止把所有话塞在一条里，像真人聊天一样分条发。"
+    "最多只说1到3句话，绝对不要超过3句。\n"
+    "不要碎碎念，不要连续发很多短句。\n"
     )
 
     system_blocks = []
@@ -1304,6 +1306,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     import re
 
+    reply = reply.replace("，", "\n").replace("。", "\n")
     parts = [p.strip() for p in re.split(r"[\\\n]+", reply) if p.strip()]
 
     import random
